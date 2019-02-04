@@ -21,13 +21,6 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.newrelic.agent.java</groupId>
-            <artifactId>newrelic-java</artifactId>
-            <version>current</version>
-            <scope>provided</scope>
-            <type>zip</type>
-        </dependency>
     </dependencies>
 
 <profiles>
@@ -50,32 +43,7 @@
               		  <warName>ROOT</warName>
                 </configuration>
             </plugin>
-            <!-- Unzip New Relic Java agent into target/ -->
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-dependency-plugin</artifactId>
-               <version>current</version>
-               <executions>
-                 <execution>
-                   <id>unpack-newrelic</id>
-                   <phase>package</phase>
-                   <goals>
-                     <goal>unpack-dependencies</goal>
-                   </goals>
-                   <configuration>
-                     <includeGroupIds>com.newrelic.agent.java</includeGroupIds>
-                     <includeArtifactIds>newrelic-java</includeArtifactIds>
-                     <!-- you can optionally exclude files -->
-                     <!-- <excludes>**/newrelic.yml</excludes> -->
-                     <overWriteReleases>false</overWriteReleases>
-                     <overWriteSnapshots>false</overWriteSnapshots>
-                     <overWriteIfNewer>true</overWriteIfNewer>
-                     <outputDirectory>${project.build.directory}</outputDirectory>
-                   </configuration>
-                 </execution>
-               </executions>
-             </plugin>
-        </plugins>
+          </plugins>
       </build>
     </profile>
   </profiles>
